@@ -1,4 +1,5 @@
 import psycopg2
+import sys
 
 param_dic = {
     "host"      : "localhost",
@@ -26,13 +27,15 @@ def connect(params_dic):
 def build_db(conn):
     cur = conn.cursor()
     try:
-        cur.execute("DROP TABLE IF EXISTS pokemon")
-        cur.execute("DROP TABLE IF EXISTS pokemon_move_methods")
-        cur.execute("DROP TABLE IF EXISTS types")
-        cur.execute("DROP TABLE IF EXISTS hasType")
-        cur.execute("DROP TABLE IF EXISTS moves")
-        cur.execute("DROP TABLE IF EXISTS movepool")
-        cur.execute("DROP TABLE IF EXISTS versions")
+        cur.execute("DROP TABLE IF EXISTS pokemon CASCADE")
+        cur.execute("DROP TABLE IF EXISTS pokemon_move_methods CASCADE")
+        cur.execute("DROP TABLE IF EXISTS types CASCADE")
+        cur.execute("DROP TABLE IF EXISTS hasType CASCADE")
+        cur.execute("DROP TABLE IF EXISTS moves CASCADE")
+        cur.execute("DROP TABLE IF EXISTS movepool CASCADE")
+        cur.execute("DROP TABLE IF EXISTS versions CASCADE")
+        cur.execute("DROP TABLE IF EXISTS pokemon_species CASCADE")
+
 
 
         cur.execute('''CREATE table pokemon(pokedex_number SERIAL UNIQUE NOT NULL,
@@ -120,8 +123,25 @@ def build_db(conn):
             cur.copy_from(f, 'movepool', sep=',')
         f.close()
         
+        cur.execute('''CREATE TABLE pokemon_species(
+                            pokedex_number integer,
+                            generation_id integer,
+                            evolves_from_species_id integer,
+                            evolution_chain_id integer,
+                            color_id integer,
+                            shape_id integer,
+                            gender_rate integer,
+                            base_happiness integer,
+                            hatch_counter integer,
+                            growth_rate_id integer,
+                            is_legendary boolean,
+                            is_mythical boolean
+        )''')
+        with open(r'pokemon_species.csv', 'r') as f:
+            next(f)
+            cur.copy_from(f, 'pokemon_species', sep=',')
+        f.close()
 
-        
         cur.close()
 
 

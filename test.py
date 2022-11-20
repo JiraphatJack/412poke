@@ -56,8 +56,8 @@ moves = postgresql_to_dataframe(conn, "SELECT * from moves", moves_column_names)
 print(pokemon)
 
 
-#plt.scatter(pokemon['height'],pokemon['weight'])
-#plt.show()
+plt.scatter(pokemon['height'],pokemon['weight'])
+plt.show()
 """
 fig, axs = plt.subplots(1, 1, figsize = (10,7), tight_layout = True)
 
