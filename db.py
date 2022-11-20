@@ -135,7 +135,9 @@ def build_db(conn):
                             hatch_counter integer,
                             growth_rate_id integer,
                             is_legendary boolean,
-                            is_mythical boolean
+                            is_mythical boolean,
+                            PRIMARY KEY(pokedex_number),
+                            FOREIGN KEY(pokedex_number) REFERENCES pokemon(pokedex_number)
         )''')
         with open(r'pokemon_species.csv', 'r') as f:
             next(f)
