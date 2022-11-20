@@ -1,4 +1,4 @@
-pokemon_id,type_id,slot
+pokedex_number,type_id,slot
 1,12,1
 1,4,2
 2,12,1

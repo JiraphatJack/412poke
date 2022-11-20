@@ -2,8 +2,8 @@ import sys
 import psycopg2 
 import psycopg2.extras
 import pandas as pd
-import json
-import requests
+import matplotlib.pyplot as plt
+import seaborn as sns
 param_dic = {
     "host"      : "localhost",
     "database"  : "postgres",
@@ -46,16 +46,29 @@ def postgresql_to_dataframe(conn, select_querry, column_names):
 
 conn = connect(param_dic)
 pokemon_column_names = ["pokedex_number", "name", "capture_rate", "height", "weight", "region_name"]
-col = ["name"]
+col = ["name","capture_rate", "height", "weight"]
 moves_column_names = ["move_id", "move_name", "type_id"]
 move_pool_column_names = ["movepool_id", "pokedex_number", "version_id","move_id","move_method_id","level_learned"]
 # Execute the "SELECT *" query
-pokemon = postgresql_to_dataframe(conn, "select name from pokemon where capture_rate < 50", col)
+pokemon = postgresql_to_dataframe(conn, "select name,capture_rate,height,weight from pokemon", col)
 moves = postgresql_to_dataframe(conn, "SELECT * from moves", moves_column_names)
 
 print(pokemon)
 
 
+plt.scatter(pokemon['height'],pokemon['weight'])
+plt.show()
 
+legendary = postgresql_to_dataframe(conn, "select name,capture_rate from pokemon, pokemon_species where pokemon.pokedex_number = pokemon_species.pokedex_number and pokemon_species.is_legendary", ["name", "capture_rate"])
+
+print(legendary)
+
+"""
+fig, axs = plt.subplots(1, 1, figsize = (10,7), tight_layout = True)
+
+axs.hist(pokemon['capture_rate'],bins = 30)
+
+plt.show()
+"""
 
 conn.close()

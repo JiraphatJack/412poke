@@ -5,7 +5,7 @@ import tkinter.messagebox
 display = tkinter.Tk()
 display.geometry('500x250')
 
-background = tkinter.PhotoImage(file="/Users/wjk/PycharmProjects/412poke/pokemonLogo.gif") #give it a better color later
+background = tkinter.PhotoImage(file="pokemonLogo.gif") #give it a better color later
 bgimg = Label(display, i=background)
 bgimg.img_ref = background
 bgimg.pack()
