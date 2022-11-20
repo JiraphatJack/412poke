@@ -3,6 +3,7 @@ import psycopg2
 import psycopg2.extras
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 param_dic = {
     "host"      : "localhost",
     "database"  : "postgres",
@@ -55,7 +56,13 @@ moves = postgresql_to_dataframe(conn, "SELECT * from moves", moves_column_names)
 print(pokemon)
 
 
-plt.scatter(pokemon['height'],pokemon['weight'])
+#plt.scatter(pokemon['height'],pokemon['weight'])
+#plt.show()
+
+fig, axs = plt.subplots(1, 1, figsize = (10,7), tight_layout = True)
+
+axs.hist(pokemon['capture_rate'],bins = 30)
+
 plt.show()
 
 conn.close()
