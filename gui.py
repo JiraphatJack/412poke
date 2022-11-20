@@ -5,8 +5,9 @@ import tkinter.messagebox
 display = tkinter.Tk()
 display.geometry('500x250')
 
-background = tkinter.PhotoImage(file="Users/brandontsai/Downloads/pokedexbg.jpeg") #give it a better color later
+background = tkinter.PhotoImage(file="/Users/wjk/PycharmProjects/412poke/pokemonLogo.gif") #give it a better color later
 bgimg = Label(display, i=background)
+bgimg.img_ref = background
 bgimg.pack()
 
 titleLabel = Label(display, text = 'Welcome to the Pokedex API! Click a button.', width = 100, height = 75)
