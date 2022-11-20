@@ -58,11 +58,12 @@ print(pokemon)
 
 #plt.scatter(pokemon['height'],pokemon['weight'])
 #plt.show()
-
+"""
 fig, axs = plt.subplots(1, 1, figsize = (10,7), tight_layout = True)
 
 axs.hist(pokemon['capture_rate'],bins = 30)
 
 plt.show()
+"""
 
 conn.close()
