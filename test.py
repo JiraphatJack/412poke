@@ -3,6 +3,7 @@ import psycopg2
 import psycopg2.extras
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 param_dic = {
     "host"      : "localhost",
     "database"  : "postgres",
@@ -57,5 +58,17 @@ print(pokemon)
 
 plt.scatter(pokemon['height'],pokemon['weight'])
 plt.show()
+
+legendary = postgresql_to_dataframe(conn, "select name,capture_rate from pokemon, pokemon_species where pokemon.pokedex_number = pokemon_species.pokedex_number and pokemon_species.is_legendary", ["name", "capture_rate"])
+
+print(legendary)
+
+"""
+fig, axs = plt.subplots(1, 1, figsize = (10,7), tight_layout = True)
+
+axs.hist(pokemon['capture_rate'],bins = 30)
+
+plt.show()
+"""
 
 conn.close()
