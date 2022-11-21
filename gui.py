@@ -11,7 +11,7 @@ param_dic = {
     "host"      : "localhost",
     "database"  : "postgres",
     "user"      : "postgres",
-    "password"  : "WasNotNaka:("
+    "password"  : "qwer"
 }
 port_id = 5432
 
@@ -72,7 +72,6 @@ def openHeightWeightScreen():
     #screen.geometry('750x375')
     #Label(screen, text = "Height-Weight Scatter Plot").pack()
     #insert graph or image of graph here
-    print(pokemon)
     plt.scatter(pokemon['height'],pokemon['weight'])
     plt.xlabel("height")
     plt.ylabel("weight")
@@ -92,7 +91,6 @@ def openMoveTypeScreen():
                                                 GROUP BY types.type_id) as x, types
                                             WHERE types.type_id = x.id
                                             ORDER BY types.type_id''', ["type_name","count"])
-    print(moves)
     fig = plt.figure(figsize = (20, 5))
     plt.bar(moves['type_name'],moves['count'], width = 0.6)
     plt.xlabel("type")
@@ -113,8 +111,6 @@ def openPokemonTypeScreen():
                                                 GROUP BY types.type_id) as x, types
                                             WHERE types.type_id = x.id
                                             ORDER BY types.type_id''', ["type_name","count"])
-
-    print(types)
     fig = plt.figure(figsize = (20, 5))
     plt.bar(types['type_name'],types['count'], width = 0.6)
     plt.xlabel("type")
