@@ -57,9 +57,9 @@ def whenClosed():
 display = tkinter.Tk()
 display.geometry('500x250')
 
-#background = tkinter.PhotoImage(file="pokemonLogo.gif") #background
-#bgimg = Label(display, i=background)
-#bgimg.pack()
+background = tkinter.PhotoImage(file="pokemonLogo.gif") #background
+bgimg = Label(display, i=background)
+bgimg.pack()
 
 titleLabel = Label(display, text = 'Welcome to the Pokedex API! Click a button.', width = 35, height = 1)
 titleLabel.place(x=250, y= 20)
