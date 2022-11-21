@@ -11,7 +11,7 @@ param_dic = {
     "host"      : "localhost",
     "database"  : "postgres",
     "user"      : "postgres",
-    "password"  : "qwer"
+    "password"  : ""
 }
 port_id = 5432
 
@@ -62,7 +62,7 @@ bgimg = Label(display, i=background)
 bgimg.pack()
 
 titleLabel = Label(display, text = 'Welcome to the Pokedex API! Click a button.', width = 35, height = 1)
-titleLabel.place(x=250, y= 20)
+titleLabel.place(x=125, y= 20)
 col = ["name","capture_rate", "height", "weight"]
 pokemon = postgresql_to_dataframe(conn, "select name,capture_rate,height,weight from pokemon", col)
 
@@ -167,23 +167,23 @@ def CaptureRateHeightScreen():
     plt.title("Scatter plot of capture rate VS height")
     plt.show()
 
-heightWeightButton = Button(display, text="Height-Weight Comparison", command = openHeightWeightScreen)
-heightWeightButton.place(x=20, y=50)
+heightWeightButton = Button(display, text="Height-Weight Comparison", command = openHeightWeightScreen, width = 25, height = 1)
+heightWeightButton.place(x=15, y=50)
 
-MoveTypeButton = Button(display, text="Move Type Analysis", command = openMoveTypeScreen)
-MoveTypeButton.place(x=20, y=100)
+MoveTypeButton = Button(display, text="Move Type Analysis", command = openMoveTypeScreen, width = 25, height = 1)
+MoveTypeButton.place(x=15, y=100)
 
-PokemonTypeButton = Button(display, text="Pokemon Type Analysis", command = openPokemonTypeScreen)
-PokemonTypeButton.place(x=20, y=150)
+PokemonTypeButton = Button(display, text="Pokemon Type Analysis", command = openPokemonTypeScreen, width = 25, height = 1)
+PokemonTypeButton.place(x=15, y=150)
 
-captureRateWeightButton = Button(display, text="Capture Rate vs Weight Scatter Plot", command = CaptureRateWeightScreen)
-captureRateWeightButton.place(x=225, y=50)
+captureRateWeightButton = Button(display, text="Capture Rate vs Weight Plot", command = CaptureRateWeightScreen, width = 25, height = 1)
+captureRateWeightButton.place(x=300, y=50)
 
-captureRateHeightButton = Button(display, text="Capture Rate vs Height Scatter Plot", command = CaptureRateHeightScreen)
-captureRateHeightButton.place(x=225, y=100)
+captureRateHeightButton = Button(display, text="Capture Rate vs Height Plot", command = CaptureRateHeightScreen, width = 25, height = 1)
+captureRateHeightButton.place(x=300, y=100)
 
-NumMovesButton = Button(display, text="Number of Learnable Moves", command = NumMovesScreen)
-NumMovesButton.place(x=225, y=150)
+NumMovesButton = Button(display, text="Number of Learnable Moves", command = NumMovesScreen, width = 25, height = 1)
+NumMovesButton.place(x=300, y=150)
 
 display.protocol("WM_DELETE_WINDOW", whenClosed)
 display.mainloop()
