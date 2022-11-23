@@ -61,7 +61,7 @@ background = tkinter.PhotoImage(file="pokemonLogo.gif") #background
 bgimg = Label(display, i=background)
 bgimg.pack()
 
-titleLabel = Label(display, text = 'Welcome to the Pokedex API! Click a button.', width = 35, height = 1)
+titleLabel = Label(display, text = 'Welcome to the Pokedex APP! Click a button.', width = 35, height = 1)
 titleLabel.place(x=125, y= 20)
 col = ["name","capture_rate", "height", "weight"]
 pokemon = postgresql_to_dataframe(conn, "select name,capture_rate,height,weight from pokemon", col)
