@@ -29,7 +29,7 @@ def connect(params_dic):
     print('Successful')
     return conn
 
-#convert result from query to pandas dataframe
+#convert results from query to pandas dataframe
 def postgresql_to_dataframe(conn, select_querry, column_names):
     cur = conn.cursor()
     try:
